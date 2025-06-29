@@ -20,7 +20,7 @@ export class LifeCycleHooksChild implements OnInit, OnChanges, DoCheck, AfterCon
 
     // Called before ngOnInit when input property changes
     ngOnChanges(changes: SimpleChanges): void {
-        console.log('ngOnChanges:', changes);
+        console.log('ngOnChanges:', this.sampleInput, changes);
     }
 
     // Called once after first ngOnChanges

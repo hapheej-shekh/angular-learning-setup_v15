@@ -2,9 +2,10 @@
     <legend>Angular Life Cycle Hooks [Check Console Logs]</legend>
     <br/>
 
-    <life-cycle-hooks-child *ngIf="showComponent" [sampleInput]="inputValue">
-
-    </life-cycle-hooks-child>
+    <div *ngIf="showComponent">
+        <input [(ngModel)]="inputValue" placeholder="Type something" />
+        <life-cycle-hooks-child [sampleInput]="inputValue"></life-cycle-hooks-child>
+    </div>    
 
     <br/>
 

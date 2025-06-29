@@ -16,6 +16,13 @@ export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: R
     return authService.isLoggedIn();
 };
 
+//Can also declare without specifying ActivatedRouteSnapshot & RouterStateSnapshot
+export const authGuard1: CanActivateFn = (route, state) => {
+
+    const authService = inject(AuthService);
+
+    return authService.isLoggedIn();
+};
 
 export const confirmLeaveGuard: CanDeactivateFn<SimpleForm> = (component, route, state) => {
 
