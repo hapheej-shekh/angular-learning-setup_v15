@@ -5,3 +5,26 @@
 <p [innerHtml]="'Father: ' +family.father"></p>
 <p [innerHtml]="'Grand Ma: ' +family.grandMa"></p>
 <p [innerHtml]="'Uncle: ' +family.uncle"></p>
+
+<br />
+
+<h3 style="color: green;">Other example using Property Binding!</h3>
+
+<!-- Properties -> [src], [ngStyle], [value], [disabled], [hidden] -->
+
+<div class="card" [ngStyle]="{ border: '2px solid #ccc', padding: '16px', width: '300px' }">
+  <img [src]="family1.imageUrl" alt="Family Photo" width="100" height="100" />
+
+  <h3>Father: <input [value]="family1.father" [disabled]="isEditDisabled" /></h3>
+
+  <button (click)="isEditDisabled = !isEditDisabled">
+    {{ isEditDisabled ? 'Enable Edit' : 'Disable Edit' }}
+  </button>
+
+  <div [hidden]="!family1.showChildren">
+    <h4>Children:</h4>
+    <ul>
+      <li *ngFor="let child of family1.children">{{ child }}</li>
+    </ul>
+  </div>
+</div>

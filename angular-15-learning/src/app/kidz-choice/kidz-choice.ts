@@ -17,7 +17,7 @@ export class KidzChoice {
     hoverIndex: number | null = null;
 
     ngAfterViewInit() {
-        this.updateGridSize();
+        setTimeout(() => this.updateGridSize(), 10);
     }
 
     @HostListener('window:resize')

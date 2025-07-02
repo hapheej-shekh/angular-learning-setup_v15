@@ -7,9 +7,9 @@
     <br />  <br />
     <button (click)="isLoggedIn = !isLoggedIn">Toggle Login</button>
 
-    <div *ngIf="isLoggedIn; else loggedOutTemplate">
+    <ng-container *ngIf="isLoggedIn; else loggedOutTemplate">
         <p>Welcome, Arham Shekh!</p>
-    </div>
+    </ng-container>
 
     <!-- ng-template for logged out -->
     <ng-template #loggedOutTemplate>
@@ -70,7 +70,7 @@
     <u>Passing Data to Template</u>
 
     <!-- Template outlet -->
-    <ng-container *ngTemplateOutlet="userTemplate; context: { $implicit: user, age: 30 }"></ng-container>
+    <ng-container *ngTemplateOutlet="userTemplate; context: { $implicit: user, age: 4 }"></ng-container>
 
     <!-- Template -->
     <ng-template #userTemplate let-user let-age="age">

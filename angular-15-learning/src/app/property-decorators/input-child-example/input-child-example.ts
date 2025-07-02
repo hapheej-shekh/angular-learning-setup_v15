@@ -19,7 +19,7 @@ export class InputChildExample implements OnInit {
     ngOnInit() {
         this.route.params.subscribe(params => {
             this.title = params['title'];
-            this.count = +params['count'];  // ✅ Convert string to number
+            this.count = +params['count'];  // '+' converts string to number
         });
     }
 }

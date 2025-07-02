@@ -6,19 +6,22 @@ import { Directive, HostBinding, HostListener, Input } from '@angular/core';
 })
 export class TooltipDirective {
 
-    @Input('tooltip') tooltipText!: string;
+  @Input('tooltip') tooltipText!: string;
 
-    @HostBinding('class.tooltip-active') isActive = false;  // Dynamically bind class
-    @HostBinding('style.backgroundColor') backgroundColor = 'transparent';  // Style binding
-    @HostBinding('attr.data-tooltip') get dataTooltip() { return this.tooltipText; }  // Attribute binding
+  @HostBinding('style.backgroundColor') background = '#BDB76B';
 
-    @HostListener('mouseenter') onMouseEnter() {
-        this.isActive = true;
-        this.backgroundColor = 'lightgreen';  // Change background on hover
-    }
+  @HostBinding('attr.data-tooltip')
+  get tooltip() {
+    return this.tooltipText;
+  }
 
-    @HostListener('mouseleave') onMouseLeave() {
-        this.isActive = false;
-        this.backgroundColor = 'transparent';  // Reset background on leave
-    }
+  @HostListener('mouseenter')
+  onEnter() {
+    this.background = 'lightyellow';
+  }
+
+  @HostListener('mouseleave')
+  onLeave() {
+    this.background = 'lightpink';
+  }
 }

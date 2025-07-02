@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChild } from '@angular/core';
+import { AfterContentInit, Component, ContentChild, forwardRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Child } from '../content-child/child';
 

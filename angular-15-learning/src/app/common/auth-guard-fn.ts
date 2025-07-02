@@ -28,7 +28,7 @@ export const confirmLeaveGuard: CanDeactivateFn<SimpleForm> = (component, route,
 
     const authService = inject(AuthService);
 
-    return !authService.isLoggedIn() ? confirm('Discard changes?') : true;
+    return authService.isLoggedIn() ? true : confirm('Discard changes?');
 };
 
 

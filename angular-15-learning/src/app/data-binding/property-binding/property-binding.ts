@@ -17,4 +17,13 @@ export class PropertyBinding {
         grandMa: "Dadi",
         uncle: "Rafeek Shekh"
     }
+
+    family1 = {
+        father: 'Hapheej Shekh',
+        imageUrl: 'assets/Avtar.png',
+        showChildren: true,
+        children: ['Arham', 'Fatima']
+    };
+
+    isEditDisabled = true;
 }

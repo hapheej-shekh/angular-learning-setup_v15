@@ -18,10 +18,10 @@ export class LoginForm {
     user: any = {
         username: '',
         password: '',
-        remember: true
+        remember: false
     };
 
-    private userDetail: User = new User('', '', true);
+    private userDetail: User = new User('', '', false);
 
     public login(): void {
 
@@ -31,17 +31,18 @@ export class LoginForm {
         if(this.user.password!=null && this.user.password!='')
             this.userDetail.setPassword(this.user.password)
 
-        this.userDetail.rememberMe(this.user.remember);
-
-        if(this.userDetail.isValidUser()) 
+        if(this.userDetail.isValidUser()) {
+            this.userDetail.rememberMe(this.user.remember);
             this.localStorage.setUserDetail(this.userDetail);
+            this.router.navigate(['/default']);
+        } else 
+            this.router.navigate(['/default']);
 
         this.user = {
             username: '',
             password: '',
-            remember: true
+            remember: false
         };
-        this.router.navigate(['/']);
     }
 
     cancel(): void {
@@ -91,13 +92,13 @@ export class User {
 
     public isValidUser(): boolean {
 
-        if(this.username=='' || this.username==undefined)
+        if(this.username==null && this.username=='')
             return false;
 
-        if(this.password=='' || this.password==undefined)
+        if(this.password==null || this.password=='')
             return false;
 
-        if(this.remember==undefined)
+        if(this.remember==null || this.remember==undefined)
             return false;
 
         return true;

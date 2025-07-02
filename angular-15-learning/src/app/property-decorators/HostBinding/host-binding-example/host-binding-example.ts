@@ -11,12 +11,11 @@ import { TooltipDirective } from '../tooltip-directive';
 })
 export class HostBindingExample {
 
-    @HostBinding('style.backgroundColor') backgroundColor = 'skyblue';
-    @HostBinding('style.color') color = 'white';
+    @HostBinding('style.color') color = 'green';
     @HostBinding('class.active') isActive = false;
 
     toggleActive() {
         this.isActive = !this.isActive;
-        this.backgroundColor = this.isActive ? 'green' : 'skyblue';
+        this.color = this.isActive ? 'red' : 'green';
     }
 }

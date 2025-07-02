@@ -4,11 +4,12 @@ import { LocalStorageService } from './local-storage-service';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-  constructor(private localStorage: LocalStorageService) { }
+  constructor(private storage: LocalStorageService) { }
 
   public isLoggedIn(): boolean {
 
-    return (this.localStorage.getUsername()!='' && this.localStorage.getUsername()!=undefined 
-            && this.localStorage.getUsername()!=null);
+    // Take cares bith localStorage & sessionStorage
+    return this.storage.getUsername()!='' && this.storage.getUsername()!=undefined 
+            && this.storage.getUsername()!=null;
   }
 }

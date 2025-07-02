@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 export class PromiseExample implements OnInit {
 
     promiseResponse: string = '';
+    promiseFinished: string = '';
 
     ngOnInit(): void {
         
@@ -43,7 +44,7 @@ export class PromiseExample implements OnInit {
                 this.promiseResponse = error;
             })
             .finally(() => {    // Runs always
-                setTimeout(() => { this.promiseResponse = 'Promise execution finished' }, 5000);
+                setTimeout(() => { this.promiseFinished = 'Promise execution finished' }, 5000);
             });
     }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { defer, EMPTY, from, interval, Observable, of, range, take, throwError, timer } from 'rxjs';
 
@@ -9,7 +9,7 @@ import { defer, EMPTY, from, interval, Observable, of, range, take, throwError, 
     templateUrl: './observable-creation-ways.html',
     styleUrls: ['./observable-creation-ways.css']
 })
-export class ObservableCreationWays {
+export class ObservableCreationWays implements OnInit {
 
     // 1. Manual Creation-      new Observable()
 
@@ -119,11 +119,16 @@ export class ObservableCreationWays {
         });
 
         this.customObservable9.subscribe({
-            next: value => console.log(value),
+            error: value => console.log('Caught Error: ', value.message),
             complete: () => console.log('Observable9 completed!')
         });
 
         this.customObservable10.subscribe(val => console.log('Observable10 completed! ', val));
         this.customObservable10.subscribe(val => console.log('Observable10 completed! ', val));
+    }
+
+    ngOnInit(): void {
+
+        this.accessObservable();
     }
 }

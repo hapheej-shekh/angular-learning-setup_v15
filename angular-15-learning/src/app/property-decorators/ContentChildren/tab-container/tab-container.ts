@@ -16,7 +16,8 @@ export class TabContainer implements AfterContentInit {
     ngAfterContentInit() {
         // Activate the first tab by default
         if (this.tabs.length > 0) {
-            this.tabs.first.active = true;
+            //this.tabs.first.active = true;
+            this.tabs.last.active = true;
         }
     }
 

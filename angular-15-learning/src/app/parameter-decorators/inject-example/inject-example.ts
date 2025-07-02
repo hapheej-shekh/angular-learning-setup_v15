@@ -1,6 +1,7 @@
 import { Component, Inject, InjectionToken } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Injectable } from '@angular/core';
+import { User, USER_TOKEN } from 'src/app/common-tokens/user-token';
 
 @Component({
     selector: 'inject-example',
@@ -11,30 +12,31 @@ import { Injectable } from '@angular/core';
 })
 export class InjectExample {
 
+    /*  TypeScript don't inject Interfaces automatically &
+        'MULTI_SERVICES' from main.ts */
+
     constructor(@Inject(USER_TOKEN) public user: User,
         @Inject('MULTI_SERVICES') public services: any[]) {
-            //MULTI_SERVICES from AppModule
-        console.log(this.user);  // { id: 1, name: 'Arham' } from AppModule
+
+        // { id: 1, name: 'Arham', email: 'arham@example.com' } from main.ts
+        console.log(this.user);
+
+        this.services.forEach((value, index, array) => {
+            console.log( (index+1) + ' => ' + value.getData() );
+        });
     }
-}
 
-export interface User {
-    id: number;
-    name: string;
-}
+    /*  Can also give any tpye, 'USER_TOKEN' will define actual type at runtime
 
-// InjectionToken for injecting the interface, providing input from main.ts
-export const USER_TOKEN = new InjectionToken<User>('USER_TOKEN');
+    constructor(@Inject(USER_TOKEN) public user: any,
+        @Inject('MULTI_SERVICES') public services: any[]) {
 
+        // { id: 1, name: 'Arham', email: 'arham@example.com' } from main.ts
+        console.log(this.user);
 
-// Service 1
-@Injectable({ providedIn: 'root' })
-export class ServiceOne {
-    getData() { return 'Service One'; }
-}
-
-// Service 2
-@Injectable({ providedIn: 'root' })
-export class ServiceTwo {
-    getData() { return 'Service Two'; }
+        this.services.forEach((value, index, array)=>{
+            console.log(index+' => '+value);
+        });
+    }
+    */
 }

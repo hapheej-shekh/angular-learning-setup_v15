@@ -15,4 +15,6 @@ export class NgContainerExample {
     products: any [] = ['Apple', 'Papaya', 'Banana'];
     users: any [] = ['Arham', 'Fatima'];
     status = 'active';
+
+    //users: any [] = []; //check this also for <ng-template #noUsers> to work
 }
